@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: telegram-fix-userbot
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /ping
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: API_ID
+        sync: false
+      - key: API_HASH
+        sync: false
+      - key: TELEGRAM_SESSION
+        sync: false
+      - key: SOURCE_CHAT
+        sync: false
+      - key: TARGET_BOT_USERNAME
+        value: toolsfixredupgradeGAARZ_BOT
+      - key: TARGET_COMMAND
+        value: /fix
+      - key: AUTO_CLICK_JOIN_CHECK
+        value: true
+      - key: JOIN_CHECK_DELAY_MS
+        value: 2000
+      - key: JOIN_CHECK_MAX_ATTEMPTS
+        value: 3
+      - key: STATE_FILE
+        value: ./state.json
